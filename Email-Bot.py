@@ -50,7 +50,7 @@ class login:
         lbl_password = Label(Frame_login, text="Password", font=(
             "Century", 13), fg="black", bg="ghost white").place(x=50, y=250)
         self.password = Entry(Frame_login, font=(
-            "Century", 13), bg="#E7E6E6")
+            "Century", 13), bg="#E7E6E6", show="*")
         self.password.place(x=50, y=280, width=320, height=35)
 
         Submit = Button(Frame_login, command=self.home, cursor="hand2", text="Login?", bd=0.5, font=(
