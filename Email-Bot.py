@@ -53,27 +53,30 @@ class login:
             "Century", 13), bg="#E7E6E6", show="*")
         self.password.place(x=50, y=280, width=320, height=35)
 
-        Submit = Button(Frame_login, command=self.home, cursor="hand2", text="Login?", bd=0.5, font=(
+        Submit = Button(Frame_login, command=self.check_func, cursor="hand2", text="Login?", bd=0.5, font=(
             "Century", 13), fg="black", bg="white smoke").place(x=160, y=340, width=150, height=35)
-
-    def home(self):
-        self.root = root
-        self.root.title("Embot-Home")
-        self.root.geometry("1080x615+100+50")
-        self.root.resizable(False, False)
-        self.bg = ImageTk.PhotoImage(
-            file=r"C:\Users\HP\OneDrive\Desktop\Email-bot\talk_embot.gif")
-        self.bg_image = Label(self.root, image=self.bg).place(
-            x=0, y=0, relwidth=1, relheight=1)
-        Button(cursor="hand2", text="Start", bd=0.5, font=(
-            "Century", 13,), fg="black", bg="white smoke", command=self.check_func).place(x=460, y=520, width=150, height=35)
 
     def check_func(self):
         if self.username.get() == "" or self.password.get() == "":
-            messagebox.showerror(
-                "Error", "Please Enter Username & Password", parent=self.root)
+            messagebox.showerror("Error", "Please Enter Username & Password", parent=self.root)
         elif self.username.get() or self.password.get():
             messagebox.showinfo("Welcome", f"Welcome - {self.username.get()}")
+
+        def home(self):
+            self.root = root
+            self.root.title("Embot-Home")
+            self.root.geometry("1080x615+100+50")
+            self.root.resizable(False, False)
+            self.bg = ImageTk.PhotoImage(
+                file=r"C:\Users\HP\OneDrive\Desktop\Email-bot\talk_embot.gif")
+            self.bg_image = Label(self.root, image=self.bg).place(
+                x=0, y=0, relwidth=1, relheight=1)
+            Button(cursor="hand2", text="Start", bd=0.5, font=(
+                "Century", 13,), fg="black", bg="white smoke", command=self.run).place(x=460, y=520, width=150, height=35)
+        home(self)
+
+
+    def run(self):
 
         def speak(audio):
             engine.say(audio)
@@ -109,7 +112,7 @@ class login:
             except Exception as e:
              # print(e)
                 print("Say that again please...")
-                return "None"
+                # return "None"
             return query.lower()
 
         def send_email(receiver, subject, message):
