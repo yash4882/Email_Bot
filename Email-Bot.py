@@ -59,6 +59,7 @@ class login:
     def check_func(self):
         if self.username.get() == "" or self.password.get() == "":
             messagebox.showerror("Error", "Please Enter Username & Password", parent=self.root)
+            return login
         elif self.username.get() or self.password.get():
             messagebox.showinfo("Welcome", f"Welcome - {self.username.get()}")
 
@@ -146,7 +147,8 @@ class login:
             speak('Tell me the text in your email')
             message = takeCommand()
             send_email(receiver, subject, message)
-            speak('Hey lazy . Your email is sent')
+            speak('Sir   maam. Your email is sent')
+            messagebox.showinfo("Successful", f"Mail Send Successfully !")
 
         wishMe()
         while(True):
