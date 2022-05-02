@@ -58,7 +58,9 @@ class login:
 
     def check_func(self):
         if self.username.get() == "" or self.password.get() == "":
-            messagebox.showerror("Error", "Please Enter Username & Password", parent=self.root)
+            messagebox.showerror(
+                "Error", "Please Enter Username & Password", parent=self.root)
+            return login
         elif self.username.get() or self.password.get():
             messagebox.showinfo("Welcome", f"Welcome - {self.username.get()}")
 
@@ -72,9 +74,10 @@ class login:
             self.bg_image = Label(self.root, image=self.bg).place(
                 x=0, y=0, relwidth=1, relheight=1)
             Button(cursor="hand2", text="Start", bd=0.5, font=(
-                "Century", 13,), fg="black", bg="white smoke", command=self.run).place(x=460, y=520, width=150, height=35)
+                "Century", 13,), fg="black", bg="white smoke", command=self.run).place(x=360, y=520, width=150, height=35)
+            Button(cursor="hand2", text="Exit", bd=0.5, font=("Century", 13,), fg="black",
+                   bg="white smoke", command=exit).place(x=560, y=520, width=150, height=35)
         home(self)
-
 
     def run(self):
 
@@ -112,7 +115,7 @@ class login:
             except Exception as e:
              # print(e)
                 print("Say that again please...")
-                # return "None"
+                return "None"
             return query.lower()
 
         def send_email(receiver, subject, message):
@@ -146,7 +149,8 @@ class login:
             speak('Tell me the text in your email')
             message = takeCommand()
             send_email(receiver, subject, message)
-            speak('Hey lazy . Your email is sent')
+            speak('Sir... Your email is sent')
+            messagebox.showinfo("Successful", f"Mail Send Successfully !")
 
         wishMe()
         while(True):
@@ -158,7 +162,7 @@ class login:
             elif 'open google' in query:
                 webbrowser.open("google.com")
 
-            elif 'the time' in query:
+            elif 'time' in query:
                 strTime = datetime.datetime.now().strftime("%H:%M:%S")
                 speak(f"Sir, the time is {strTime}")
 
